@@ -26,7 +26,23 @@ public class SetupDatabase {
                     "FOREIGN KEY (developer_id) REFERENCES users(id))";
             stmt.execute(sqlGame);
 
-            System.out.println("Struktur database dengan constraint UNIQUE berhasil disiapkan!");
+            // Tabel Keranjang (Sistem keranjang - Fitur 03)
+            String sqlCart = "CREATE TABLE IF NOT EXISTS cart (" +
+                    "user_id INT, game_id INT, " +
+                    "FOREIGN KEY (user_id) REFERENCES users(id), " +
+                    "FOREIGN KEY (game_id) REFERENCES games(game_id), " +
+                    "PRIMARY KEY (user_id, game_id))";
+            stmt.execute(sqlCart);
+
+            // Tabel Wishlist (Fitur 04)
+            String sqlWishlist = "CREATE TABLE IF NOT EXISTS wishlist (" +
+                    "user_id INT, game_id INT, " +
+                    "FOREIGN KEY (user_id) REFERENCES users(id), " +
+                    "FOREIGN KEY (game_id) REFERENCES games(game_id), " +
+                    "PRIMARY KEY (user_id, game_id))";
+            stmt.execute(sqlWishlist);
+
+            System.out.println("Database berhasil disiapkan!");
         } catch (Exception e) {
             e.printStackTrace();
         }
