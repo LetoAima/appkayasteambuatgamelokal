@@ -8,22 +8,28 @@ public class SetupDatabase {
         try (Connection conn = Koneksi.getConnection();
              Statement stmt = conn.createStatement()) {
 
-            // Tabel Users: username sudah UNIQUE (Penambahan ditolak jika sama)
+            // 1. Tabel User (Hanya untuk pelanggan/pembeli)
             String sqlUser = "CREATE TABLE IF NOT EXISTS users (" +
                     "id INT AUTO_INCREMENT PRIMARY KEY, " +
                     "username VARCHAR(50) UNIQUE NOT NULL, " +
-                    "password VARCHAR(255) NOT NULL, " +
-                    "role ENUM('developer', 'user') NOT NULL)";
+                    "password VARCHAR(255) NOT NULL)";
             stmt.execute(sqlUser);
 
-            // Tabel Games: Tambahkan UNIQUE pada judul untuk mencegah redundansi
+            // 2. Tabel Developer (Data studio/pengembang, tidak login)
+            String sqlDev = "CREATE TABLE IF NOT EXISTS developers (" +
+                    "id INT AUTO_INCREMENT PRIMARY KEY, " +
+                    "nama_studio VARCHAR(100) UNIQUE NOT NULL, " +
+                    "lokasi VARCHAR(100))";
+            stmt.execute(sqlDev);
+
+            // 3. Tabel Games (Merujuk ke developers)
             String sqlGame = "CREATE TABLE IF NOT EXISTS games (" +
                     "game_id INT AUTO_INCREMENT PRIMARY KEY, " +
-                    "judul VARCHAR(100) UNIQUE NOT NULL, " + // Tambahan UNIQUE
+                    "judul VARCHAR(100) UNIQUE NOT NULL, " +
                     "deskripsi TEXT, " +
                     "harga DOUBLE, " +
                     "developer_id INT, " +
-                    "FOREIGN KEY (developer_id) REFERENCES users(id))";
+                    "FOREIGN KEY (developer_id) REFERENCES developers(id))";
             stmt.execute(sqlGame);
 
             // Tabel Keranjang (Sistem keranjang - Fitur 03)

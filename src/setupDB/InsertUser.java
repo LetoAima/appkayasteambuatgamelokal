@@ -5,17 +5,17 @@ import java.sql.PreparedStatement;
 
 public class InsertUser {
     public static void main(String[] args) {
-        String sql = "INSERT INTO users (username, password, role) VALUES (?, ?, ?)";
+        String sql = "INSERT INTO users (username, password) VALUES (?, ?)";
 
         // Data User: {Username, Password, Role}
         String[][] dataUsers = {
-                {"raihan_okto", "pass111", "developer"},
-                {"hanif_awliya", "pass222", "user"},
-                {"dunde_yusuf", "pass333", "developer"},
-                {"yomandiguna", "pass444", "user"},
-                {"jilan_atrida", "pass555", "user"},
-                {"huda_corp", "pass666", "developer"},
-                {"zidan_az", "pass777", "user"}
+                {"raihan_oktopus", "pass111"},
+                {"hanif_wiawiu", "pass222"},
+                {"dunde_dewind", "pass333"},
+                {"yoman_iguana", "pass444"},
+                {"jilan_wavy", "pass555"},
+                {"huda_yuw", "pass666"},
+                {"zidan_azz", "pass777"}
         };
 
         try (Connection conn = Koneksi.getConnection();
@@ -25,7 +25,6 @@ public class InsertUser {
             for (String[] user : dataUsers) {
                 pstmt.setString(1, user[0]); // username
                 pstmt.setString(2, user[1]); // password
-                pstmt.setString(3, user[2]); // role
                 pstmt.addBatch();
             }
 

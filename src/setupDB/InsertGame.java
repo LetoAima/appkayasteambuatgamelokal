@@ -9,11 +9,17 @@ public class InsertGame {
 
         // Data Game: {Judul, Deskripsi, Harga, Developer_ID}
         String[][] dataGames = {
-                {"Petualangan Nusantara", "RPG bertema budaya lokal", "75000", "1"},
-                {"Balap Karung Sim", "Simulator balap karung 3D", "25000", "1"},
-                {"Jalan Jalan", "Simulator keliling kota", "5000", "3"},
-                {"Candi Quest", "Puzzle misteri candi", "45000", "3"},
-                {"Wayang Battle", "Fighting game karakter wayang", "60000", "1"}
+                {"A Space for The Unbound", "Petualangan naratif bertema supranatural di pedesaan Indonesia.", "99000", "1"},
+                {"Coffe Talk", "Simulator menyeduh kopi dan mendengarkan cerita di Seattle alternatif.", "84900", "1"},
+                {"When The Past Was Around", "Game puzzle point-and-click tentang cinta dan kehilangan.", "74000", "1"},
+                {"Coral Island", "Simulator pertanian modern dengan misi melestarikan terumbu karang.", "245999", "2"},
+                {"Potion Permit", "RPG simulasi menjadi ahli kimia di kota kecil Moonbury.", "165999", "3"},
+                {"Troublemaker", "Game aksi petualangan tentang kehidupan sekolah dan turnamen bela diri.", "135000", "4"},
+                {"Troublemaker 2: Beyond Dream", "Sekuel aksi tentang impian dan persahabatan di kota Jayakarta.", "211300", "4"},
+                {"DreadOut", "Game horor supranatural tentang siswi SMA yang terjebak di kota mati.", "130999", "5"},
+                {"DreadOut 2", "Kelanjutan horor Linda dengan aksi eksplorasi kota yang lebih luas.", "165999", "5"},
+                {"Mad Goes MAD", "Perjalanan Ahmad memenangkan Battle Royale antar calon anggota HIMA", "349990", "6"},
+                {"Tyan Ahli Rambut", "Menceritakan perjuangan Tyan melindungi kuil Sisilinsing", "160000", "7"}
         };
 
         try (Connection conn = Koneksi.getConnection();
